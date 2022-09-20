@@ -1,0 +1,8 @@
+#container {
+    display: flex;
+}
+
+#container div {
+    width: 10%;
+    height: 10%;
+}

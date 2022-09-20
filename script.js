@@ -26,6 +26,7 @@ function makeGridFunction() {
        gridDiv.classList.add('gridDiv');
        gridDiv.style.width = (100/gridSize) + '%';
        gridDiv.style.height = (100/gridSize) + '%';
+       gridDiv.style.opacity = 1;
        containerDiv.appendChild(gridDiv);
     }
 
@@ -38,12 +39,20 @@ function makeGridFunction() {
 function resetGridFunction () {
     let gridNodeList = document.querySelectorAll('.gridDiv');
     gridNodeList.forEach(div => {
-        div.style.backgroundColor = 'white';
+        div.style.backgroundColor = 'rgba(255,255,255)';
     });
 }
 
 function changeDivColor () {
-    this.style.backgroundColor = 'rgb(' + randomRGBColor() + ',' + randomRGBColor() + ',' + randomRGBColor() + ')';
+    let opacityValue = parseFloat(this.style.opacity);
+    console.log(opacityValue + 2137);
+    if (opacityValue === 1) {
+        this.style.opacity = 0.1;
+        this.style.backgroundColor = 'rgb(' + randomRGBColor() + ',' + randomRGBColor() + ',' + randomRGBColor() + ')';
+    } else {
+        this.style.opacity = (opacityValue + 0.1);
+    }
+    return;
 }
 
 function randomRGBColor () {

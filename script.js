@@ -38,10 +38,15 @@ function makeGridFunction() {
 function resetGridFunction () {
     let gridNodeList = document.querySelectorAll('.gridDiv');
     gridNodeList.forEach(div => {
-        div.style.backgroundColor = 'lightblue';
+        div.style.backgroundColor = 'white';
     });
 }
 
 function changeDivColor () {
-    this.style.backgroundColor = 'blue';
+    this.style.backgroundColor = 'rgb(' + randomRGBColor() + ',' + randomRGBColor() + ',' + randomRGBColor() + ')';
+}
+
+function randomRGBColor () {
+    let randomColor = Math.ceil(Math.random()*255);
+    return randomColor;
 }

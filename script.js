@@ -45,7 +45,6 @@ function resetGridFunction () {
 
 function changeDivColor () {
     let opacityValue = parseFloat(this.style.opacity);
-    console.log(opacityValue + 2137);
     if (opacityValue === 1) {
         this.style.opacity = 0.1;
         this.style.backgroundColor = 'rgb(' + randomRGBColor() + ',' + randomRGBColor() + ',' + randomRGBColor() + ')';

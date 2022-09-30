@@ -1,9 +1,13 @@
 const containerDiv = document.querySelector('#container');
 const button = document.querySelector('#makeGrid');
 const resetButton = document.querySelector('#reset');
+const shadingButton = document.querySelector('#shading');
 
 button.addEventListener('click', makeGridFunction);
 resetButton.addEventListener('click', resetGridFunction);
+shadingButton.addEventListener('click', toggleShadingFunction);
+
+let shadingOn = false;
 
 function makeGridFunction() {
 
@@ -45,16 +49,25 @@ function resetGridFunction () {
 
 function changeDivColor () {
     let opacityValue = parseFloat(this.style.opacity);
-    if (opacityValue === 1) {
-        this.style.opacity = 0.1;
-        this.style.backgroundColor = 'rgb(' + randomRGBColor() + ',' + randomRGBColor() + ',' + randomRGBColor() + ')';
-    } else {
-        this.style.opacity = (opacityValue + 0.1);
-    }
+    if (shadingOn === true) {
+        if (opacityValue === 1) {
+            this.style.opacity = 0.1;
+            this.style.backgroundColor = 'rgb(' + randomRGBColor() + ',' + randomRGBColor() + ',' + randomRGBColor() + ')';
+        } else {
+            this.style.opacity = (opacityValue + 0.1);
+        }
     return;
+    } else {
+        this.style.backgroundColor = 'rgb(' + randomRGBColor() + ',' + randomRGBColor() + ',' + randomRGBColor() + ')';
+    }
 }
 
 function randomRGBColor () {
     let randomColor = Math.ceil(Math.random()*255);
     return randomColor;
+}
+
+function toggleShadingFunction() {
+    shadingOn = !shadingOn;
+    shadingButton.classList.toggle('active');
 }
